@@ -55,8 +55,8 @@ public class Main {
 
 class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	private static final long serialVersionUID = 1L;
-	ImageIcon newArrayIcon = new ImageIcon("\\newArrayButtonIcon.png");
-	ImageIcon startIcon = new ImageIcon("\\startButtonIcon.png");
+	ImageIcon newArrayIcon = new ImageIcon("newArrayButtonIcon.png");
+	ImageIcon startIcon = new ImageIcon("startButtonIcon.png");
 	
 	@SuppressWarnings("rawtypes")
 	JComboBox algoSelect;
