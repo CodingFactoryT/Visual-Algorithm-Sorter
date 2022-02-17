@@ -113,8 +113,8 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	
 	private void initIcons (){
 		try {
-			newArrayIcon = new ImageIcon(new File(" ").getCanonicalFile() + "newArrayButtonIcon.png");
-			startIcon = new ImageIcon(new File(" ").getCanonicalFile() + "startButtonIcon.png");
+			newArrayIcon = new ImageIcon(new File(" ").getCanonicalFile() + "\\resources\\newArrayButtonIcon.png");
+			startIcon = new ImageIcon(new File(" ").getCanonicalFile() + "\\resources\\startButtonIcon.png");
 		}
 		catch (Exception e) {}
 	}
