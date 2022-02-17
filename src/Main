@@ -17,6 +17,7 @@ import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import java.io.File;
 import java.awt.FlowLayout;
 
 import java.util.Random;
@@ -55,14 +56,14 @@ public class Main {
 
 class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	private static final long serialVersionUID = 1L;
-	ImageIcon newArrayIcon = new ImageIcon("newArrayButtonIcon.png");
-	ImageIcon startIcon = new ImageIcon("startButtonIcon.png");
+	ImageIcon newArrayIcon = null;
+	ImageIcon startIcon = null;
 	
 	@SuppressWarnings("rawtypes")
 	JComboBox algoSelect;
 	JPanel menubar = new JPanel();
-	JButton newArrayButton = new JButton("New Array", newArrayIcon);
-	JButton startButton = new JButton(startIcon);
+	JButton newArrayButton = null;
+	JButton startButton = null;
 	JRadioButton LtoH = new JRadioButton("LtoH");
 	JRadioButton HtoL = new JRadioButton("HtoL");
 	JPanel sortingOrderRadioButtons = new JPanel();
@@ -73,6 +74,10 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	Color standartColor = new Color(0xCCCCCC);	//light grey-ish
 	
 	MyFrame(){
+		initIcons();
+		newArrayButton = new JButton("New Array", newArrayIcon);
+		startButton = new JButton(startIcon);
+		
 		initFrame();
 			
 		initMenuBar();
@@ -106,8 +111,16 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 		this.setVisible(true);
 	}
 	
+	private void initIcons (){
+		try {
+			newArrayIcon = new ImageIcon(new File(" ").getCanonicalFile() + "newArrayButtonIcon.png");
+			startIcon = new ImageIcon(new File(" ").getCanonicalFile() + "startButtonIcon.png");
+		}
+		catch (Exception e) {}
+	}
+	
 	private void initFrame() {
-		this.setTitle("Visual Sorting Algortihms");
+		this.setTitle("Visual Sorting Algorithms");
 		this.setLayout(null);
 		this.setSize(Settings.screenWidth - 100, Settings.screenHeigth - 100);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -252,9 +265,9 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 			}
 					
 			if(LtoH.isSelected()) {
-				alg.sort(SortingOrder.LtoH);			
+				alg.sort(SortingOrder.LtoH, Settings.sortingDelay);			
 			} else if(HtoL.isSelected()){
-				alg.sort(SortingOrder.HtoL);
+				alg.sort(SortingOrder.HtoL, Settings.sortingDelay);
 			} 	
 		}
 	}
