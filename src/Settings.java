@@ -13,7 +13,7 @@ public class Settings {
 	public static final int minSpeed = 1;
 	public static final int maxSpeed = 5;
 	
-	public static final float delay = 5;
+	public static final int sortingDelay = 2;
 	
 	public static final int minHeigth = 5;
 	public static final int maxHeigth = 795;
