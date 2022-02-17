@@ -7,15 +7,14 @@ public abstract class SortingAlgorithm{
 		this.in = in;
 	} 
 	
-	abstract void sort(SortingOrder so);
+	abstract void sort(SortingOrder so, int delay);
 
 	public void swapBars(Bar bar1, Bar bar2) { 
 		int temp = bar1.value;
 		bar1.value = bar2.value;
 		bar2.value = temp;	
 		bar1.panel.setBounds(0,Settings.allBarsPanelHeigth-bar1.value,1000,bar1.value);
-		bar2.panel.setBounds(0,Settings.allBarsPanelHeigth-bar2.value,1000,bar2.value);	
-				
+		bar2.panel.setBounds(0,Settings.allBarsPanelHeigth-bar2.value,1000,bar2.value);					
 	}
 	
 	public void printArray() {
