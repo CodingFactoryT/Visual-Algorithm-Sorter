@@ -1,6 +1,5 @@
-
 import javax.swing.JPanel;
-
+import javax.swing.SwingWorker;
 
 public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 	
@@ -10,12 +9,19 @@ public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 	}
 
 	@Override
-	void sort(SortingOrder so) {
-		mergeSort(ar, so);
+	void sort(SortingOrder so, int delay) {
+		SwingWorker<Void, String> Worker = new SwingWorker<Void, String>(){
 
+			@Override
+			protected Void doInBackground() throws Exception {
+				mergeSort(ar, so, delay);
+				return null;
+			}
+      };
+      Worker.execute();
 	}
 	
-	void mergeSort(Bar[] ar, SortingOrder so) {
+	void mergeSort(Bar[] ar, SortingOrder so, int delay) throws Exception{
 
 		int length = ar.length;
 		if(length <= 1) return;	//base case
@@ -41,12 +47,12 @@ public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 				j++;
 			} 
 		}
-		mergeSort(leftArray, so);
-		mergeSort(rightArray, so);
-		merge(leftArray, rightArray, ar, so);
+		mergeSort(leftArray, so, delay);
+		mergeSort(rightArray, so, delay);
+		merge(leftArray, rightArray, ar, so, delay);
 	}
 	
-	void merge(Bar[] leftArray, Bar[] rightArray, Bar[] ar, SortingOrder so) {
+	void merge(Bar[] leftArray, Bar[] rightArray, Bar[] ar, SortingOrder so, int delay) throws Exception{
 		int leftSize = ar.length / 2;
 		int rightSize = ar.length - leftSize;
 		int i = 0, l = 0, r = 0; 	//indices
@@ -57,12 +63,14 @@ public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 					ar[i].value = leftArray[l].value;
 					Main.bars[i].value = leftArray[l].value;
 					Main.bars[i].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[i].value,1000,Main.bars[i].value);
+					Thread.sleep(delay);
 					i++;
 					l++;
 				} else {
 					ar[i].value = rightArray[r].value;
 					Main.bars[i].value = rightArray[r].value;
 					Main.bars[i].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[i].value,1000,Main.bars[i].value);
+					Thread.sleep(delay);
 					i++;
 					r++;
 				}			
@@ -71,12 +79,14 @@ public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 					ar[i].value = leftArray[l].value;
 					Main.bars[i].value = leftArray[l].value;
 					Main.bars[i].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[i].value,1000,Main.bars[i].value);
+					Thread.sleep(delay);
 					i++;
 					l++;
 				} else {
 					ar[i].value = rightArray[r].value;
 					Main.bars[i].value = rightArray[r].value;
 					Main.bars[i].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[i].value,1000,Main.bars[i].value);
+					Thread.sleep(delay);
 					i++;
 					r++;
 				}			
@@ -87,6 +97,7 @@ public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 			ar[i].value = leftArray[l].value;
 			Main.bars[i].value = leftArray[l].value;
 			Main.bars[i].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[i].value,1000,Main.bars[i].value);
+			Thread.sleep(delay);
 			i++;
 			l++;
 		}
@@ -94,6 +105,7 @@ public class MergeSort extends SortingAlgorithm{		//O(n log n), but more space
 			ar[i].value = rightArray[r].value;
 			Main.bars[i].value = rightArray[r].value;
 			Main.bars[i].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[i].value,1000,Main.bars[i].value);
+			Thread.sleep(delay);
 			i++;
 			r++;
 		}
