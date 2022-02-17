@@ -1,31 +1,41 @@
+import javax.swing.SwingWorker;
 
 public class HeapSort extends SortingAlgorithm{
 	
 	Bar[] ar = getArray();
-//	int[] ar = new int[] {234,654,7,412,412,5,63,6,43,6,72,1464,523,643};
+
 	HeapSort(Bar[] in) {
 		super(in);
 	}
 	
 	@Override
-	void sort(SortingOrder so) {
-		heapSort(so, ar);
+	void sort(SortingOrder so, int delay) {
+		SwingWorker<Void, String> Worker = new SwingWorker<Void, String>(){
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				heapSort(so, ar, delay);
+				return null;
+			}
+      };
+      Worker.execute();
 	}
 	
-	void heapSort(SortingOrder so, Bar[] array) {
+	void heapSort(SortingOrder so, Bar[] array, int delay) throws Exception {
 		int size = array.length;
 		
 		for(int i = size/2-1; i>=0; i--) {
-			heapify(so, array, size, i);
+			heapify(so, array, size, i, delay);
 		}
 		
 		for(int i=size-1; i>=0; i--) {
-			swapBars(array[0], array[i]);		
-			heapify(so, array, i, 0);
-		}
+			swapBars(array[0], array[i]);
+			Thread.sleep(delay);
+			heapify(so, array, i, 0, delay);
+		}		
 	}
 	
-	void heapify(SortingOrder so, Bar array[], int size, int i) {
+	void heapify(SortingOrder so, Bar array[], int size, int i, int delay) throws Exception{
 		int largest = i;
 		int l = 2*i+1;
 		int r = 2*i+2;
@@ -49,7 +59,8 @@ public class HeapSort extends SortingAlgorithm{
 		
 		if(largest != i) {
 			swapBars(array[i], array[largest]);
-			heapify(so, array, size, largest);
+			Thread.sleep(delay);
+			heapify(so, array, size, largest, delay);
 		}
 		
 	}
