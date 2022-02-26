@@ -10,7 +10,7 @@ With this visual representation of algorithms, you can see how the <br>
 </ul>
 algorithm works<br><br>
 
-The sorter only sorts arrays of the type int.
+The sorter only sorts arrays of the type ```int```.
 
 ## Installation guide
 For Windows cmd or Powershell:
