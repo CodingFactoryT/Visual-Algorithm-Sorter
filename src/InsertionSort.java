@@ -9,7 +9,7 @@ public class InsertionSort extends SortingAlgorithm {		//O(n^2), best case O(n)
 	}
 
 	@Override
-	void sort(SortingOrder so, int delay) {
+	void sort(SortingOrder so) {
 		SwingWorker<Void, String> Worker = new SwingWorker<Void, String>(){
 
 			@Override
@@ -22,14 +22,14 @@ public class InsertionSort extends SortingAlgorithm {		//O(n^2), best case O(n)
 						while(j >= 0 && ar[j].value > temp) {
 							Main.bars[j+1].value = Main.bars[j].value;
 							Main.bars[j+1].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[j+1].value,1000,Main.bars[j+1].value);
-							Thread.sleep(delay);
+							Thread.sleep(Settings.sortingDelay);
 							j--;
 						}		
 					} else if(so == SortingOrder.HtoL) {
 						while(j >= 0 && ar[j].value < temp) {
 							Main.bars[j+1].value = Main.bars[j].value;
 							Main.bars[j+1].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[j+1].value,1000,Main.bars[j+1].value);
-							Thread.sleep(delay);
+							Thread.sleep(Settings.sortingDelay);
 							j--;
 						}	
 					}
@@ -37,7 +37,7 @@ public class InsertionSort extends SortingAlgorithm {		//O(n^2), best case O(n)
 					ar[j+1].value = temp;
 					Main.bars[j+1].value = temp;
 					Main.bars[j+1].panel.setBounds(0,Settings.allBarsPanelHeigth-Main.bars[j+1].value,1000,Main.bars[j+1].value);
-					Thread.sleep(delay);
+					Thread.sleep(Settings.sortingDelay);
 				}
 				return null;
 			}
