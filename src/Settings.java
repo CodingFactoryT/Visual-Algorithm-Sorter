@@ -11,9 +11,9 @@ public class Settings {
 	public static final int menubarHeigth = 100;
 	
 	public static final int minSpeed = 1;
-	public static final int maxSpeed = 5;
+	public static final int maxSpeed = 400;
 	
-	public static final int sortingDelay = 2;
+	public static int sortingDelay = (minSpeed + maxSpeed) / 2;
 	
 	public static final int minHeigth = 5;
 	public static final int maxHeigth = 795;
