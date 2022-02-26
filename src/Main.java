@@ -17,7 +17,6 @@ import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
-import java.io.File;
 import java.awt.FlowLayout;
 
 import java.util.Random;
@@ -67,7 +66,7 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	JRadioButton LtoH = new JRadioButton("LtoH");
 	JRadioButton HtoL = new JRadioButton("HtoL");
 	JPanel sortingOrderRadioButtons = new JPanel();
-	static JSlider speedSlider = new JSlider(Settings.minSpeed,Settings.maxSpeed,3);
+	static JSlider speedSlider = new JSlider(Settings.minSpeed,Settings.maxSpeed,(Settings.minSpeed + Settings.maxSpeed) / 2);
 	JSlider arrayLengthSlider = new JSlider(Settings.minArrayValue, Settings.maxArrayValue, Main.bars.length);
 	JPanel allBarsPanel = new JPanel();
 	Font standartFont = new Font("Arial",Font.BOLD, 18);
@@ -113,8 +112,8 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	
 	private void initIcons (){
 		try {
-			newArrayIcon = new ImageIcon(new File(" ").getCanonicalFile() + "\\resources\\newArrayButtonIcon.png");
-			startIcon = new ImageIcon(new File(" ").getCanonicalFile() + "\\resources\\startButtonIcon.png");
+			newArrayIcon = new ImageIcon("resources\\newArrayButtonIcon.png");
+			startIcon = new ImageIcon("resources\\startButtonIcon.png");
 		}
 		catch (Exception e) {}
 	}
@@ -195,7 +194,8 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	private void initSpeedSlider() {
 		speedSlider.setBackground(menubar.getBackground());
 		speedSlider.setBounds(Settings.speedSliderX, Settings.menuBarComponentsY,Settings.speedSliderWidth,Settings.menuBarComponentsHeigth);
-		
+		speedSlider.addChangeListener(this);
+
 		JTextField speedSliderText = new JTextField("Sorting Speed: ");
 		speedSliderText.setFont(standartFont);
 		speedSliderText.setForeground(Color.white);
@@ -265,9 +265,9 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 			}
 					
 			if(LtoH.isSelected()) {
-				alg.sort(SortingOrder.LtoH, Settings.sortingDelay);			
+				alg.sort(SortingOrder.LtoH);			
 			} else if(HtoL.isSelected()){
-				alg.sort(SortingOrder.HtoL, Settings.sortingDelay);
+				alg.sort(SortingOrder.HtoL);
 			} 	
 		}
 	}
@@ -282,6 +282,11 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 			allBarsPanel.invalidate();
 			allBarsPanel.validate();
 			allBarsPanel.repaint();
+		}
+		
+		if(e.getSource() == speedSlider) {
+			Settings.sortingDelay = Settings.maxSpeed - speedSlider.getValue() +1;
+			System.out.println(Settings.sortingDelay);
 		}
 		
 	}
