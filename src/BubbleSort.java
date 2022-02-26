@@ -9,7 +9,7 @@ public class BubbleSort extends SortingAlgorithm{		//O(n^2)
 	}
 
 	@Override
-	void sort(SortingOrder so, int delay) {
+	void sort(SortingOrder so) {
 		
 		SwingWorker<Void, String> Worker = new SwingWorker<Void, String>(){
 
@@ -20,12 +20,12 @@ public class BubbleSort extends SortingAlgorithm{		//O(n^2)
 						if(so == SortingOrder.LtoH) {
 							if(ar[j].value > ar[j+1].value) {
 								swapBars(Main.bars[j], Main.bars[j+1]);
-								Thread.sleep(delay);
+								Thread.sleep(Settings.sortingDelay);
 							}	
 						} else if(so == SortingOrder.HtoL) {
 							if(ar[j].value < ar[j+1].value) {
 								swapBars(Main.bars[j], Main.bars[j+1]);
-								Thread.sleep(delay);
+								Thread.sleep(Settings.sortingDelay);
 							}	
 						}
 					}
