@@ -11,3 +11,13 @@ With this visual representation of algorithms, you can see how the <br>
 algorithm works<br><br>
 
 The sorter only sorts arrays of the type int.
+
+## Installation guide
+For Windows cmd or Powershell:
+```
+cd location/of/the/Main.java/file
+javac Main.java
+java Main
+```
+For executable:
+Download the code and execute the "Visual Algorithm Sorter.exe" File
