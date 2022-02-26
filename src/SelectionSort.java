@@ -9,7 +9,7 @@ public class SelectionSort extends SortingAlgorithm {		//O(n^2)
 	}
 
 	@Override
-	void sort(SortingOrder so, int delay) {
+	void sort(SortingOrder so) {
 		SwingWorker<Void, String> Worker = new SwingWorker<Void, String>(){
 
 			@Override
@@ -26,7 +26,7 @@ public class SelectionSort extends SortingAlgorithm {		//O(n^2)
 						}
 					}
 					swapBars(Main.bars[i], Main.bars[min]);
-					Thread.sleep(delay);
+					Thread.sleep(Settings.sortingDelay);
 				}
 				return null;
 			}
