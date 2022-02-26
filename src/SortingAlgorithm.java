@@ -7,7 +7,7 @@ public abstract class SortingAlgorithm{
 		this.in = in;
 	} 
 	
-	abstract void sort(SortingOrder so, int delay);
+	abstract void sort(SortingOrder so);
 
 	public void swapBars(Bar bar1, Bar bar2) { 
 		int temp = bar1.value;
