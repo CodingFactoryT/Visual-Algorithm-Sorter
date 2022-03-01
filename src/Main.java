@@ -1,5 +1,7 @@
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,9 +16,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.awt.FlowLayout;
 
 import java.util.Random;
@@ -55,8 +61,6 @@ public class Main {
 
 class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	private static final long serialVersionUID = 1L;
-	ImageIcon newArrayIcon = null;
-	ImageIcon startIcon = null;
 	
 	@SuppressWarnings("rawtypes")
 	JComboBox algoSelect;
@@ -73,9 +77,18 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 	Color standartColor = new Color(0xCCCCCC);	//light grey-ish
 	
 	MyFrame(){
-		initIcons();
-		newArrayButton = new JButton("New Array", newArrayIcon);
-		startButton = new JButton(startIcon);
+		InputStream newArrayButtonStream = new BufferedInputStream(getClass().getResourceAsStream("/resources/newArrayButtonIcon.png"));
+		InputStream startButtonStream = new BufferedInputStream(getClass().getResourceAsStream("/resources/startButtonIcon.png"));
+		
+		try {
+		ImageIcon newArrayButtonImage = new ImageIcon(ImageIO.read(newArrayButtonStream));
+		ImageIcon startButtonImage = new ImageIcon(ImageIO.read(startButtonStream));
+		
+		newArrayButton = new JButton("New Array", newArrayButtonImage);
+		startButton = new JButton(startButtonImage);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 		initFrame();
 			
@@ -110,13 +123,6 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 		this.setVisible(true);
 	}
 	
-	private void initIcons (){
-		try {
-			newArrayIcon = new ImageIcon("resources\\newArrayButtonIcon.png");
-			startIcon = new ImageIcon("resources\\startButtonIcon.png");
-		}
-		catch (Exception e) {}
-	}
 	
 	private void initFrame() {
 		this.setTitle("Visual Sorting Algorithms");
