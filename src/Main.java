@@ -149,6 +149,7 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 		algoSelect.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		algoSelect.setFont(standartFont);
 		JTextField algoSelectText = new JTextField("Algorithm: ");
+		algoSelectText.setEditable(false);
 		algoSelectText.setFont(standartFont);
 		algoSelectText.setForeground(Color.white);
 		algoSelectText.setBackground(menubar.getBackground());
@@ -203,6 +204,7 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 		speedSlider.addChangeListener(this);
 
 		JTextField speedSliderText = new JTextField("Sorting Speed: ");
+		speedSliderText.setEditable(false);
 		speedSliderText.setFont(standartFont);
 		speedSliderText.setForeground(Color.white);
 		speedSliderText.setBackground(menubar.getBackground());
@@ -217,6 +219,7 @@ class MyFrame extends JFrame implements ActionListener, ChangeListener {
 		arrayLengthSlider.addChangeListener(this);
 		
 		JTextField arrayLengthSliderText = new JTextField("Array Length: ");
+		arrayLengthSliderText.setEditable(false);
 		arrayLengthSliderText.setFont(standartFont);
 		arrayLengthSliderText.setForeground(Color.white);
 		arrayLengthSliderText.setBackground(menubar.getBackground());
