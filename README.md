@@ -13,7 +13,12 @@ algorithm works<br><br>
 The sorter only sorts arrays of the type ```int```.
 
 ## Installation guide
-Download and extract the .zip file <br> <br>
+Download and extract the .zip file <br> 
+or do
+```
+git clone https://github.com/CodingFactoryT/Visual-Algorithm-Sorter.git
+```
+if you have git installed <br> <br>
 For Windows cmd or Powershell:
 ```
 cd location/of/the/Main.java/file
