@@ -26,4 +26,4 @@ javac Main.java
 java Main
 ```
 For executable: <br>
-Download and execute the "Visual Algorithm Sorter.exe" file
+Download and execute the "Visual Algorithm Sorter.exe" file from the releases section of this repository
