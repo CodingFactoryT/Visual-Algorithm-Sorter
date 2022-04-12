@@ -21,9 +21,9 @@ git clone https://github.com/CodingFactoryT/Visual-Algorithm-Sorter.git
 if you have git installed <br> <br>
 For Windows cmd or Powershell:
 ```
-cd location/of/the/Main.java/file
-javac Main.java
-java Main
+cd location/of/your/downloaded/folder/Visual-Algorithm-Sorter/src
+javac main/java/Main.java
+java  main/java/Main
 ```
 For executable: <br>
 Download and execute the "Visual Algorithm Sorter.exe" file from the releases section of this repository
