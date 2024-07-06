@@ -1,4 +1,7 @@
 # Visual-Algorithm-Sorter
+
+![Visual Algorithm Sorter](https://github.com/CodingFactoryT/Visual-Algorithm-Sorter/blob/main/screenshots/Visual%20Algorithm%20Sorter.png)
+
 With this visual representation of algorithms, you can see how the <br>
 <ul>
   <li>BubbleSort </li>
