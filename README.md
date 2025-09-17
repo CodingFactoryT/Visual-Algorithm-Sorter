@@ -19,7 +19,7 @@ The sorter only sorts arrays of the type ```int```.
 Download and extract the .zip file <br> 
 or do
 ```
-git clone https://github.com/CodingFactoryT/Visual-Algorithm-Sorter.git
+git clone https://github.com/timbslr/Visual-Algorithm-Sorter.git
 ```
 if you have git installed <br> <br>
 For Windows cmd or Powershell:
